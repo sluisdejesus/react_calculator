@@ -83,5 +83,43 @@ describe('Calculator', () => {
     button8.simulate('click');
     expect(runningTotal.text()).toEqual('968')
   })
+  
+  it ('Should be able to chain multiple operations together', ()=> {
+    const divideButton = container.find('#operator-divide')
+    const subtractButton = container.find('#operator-subtract')
+    const button7 = container.find('#number7');
+    const button8 = container.find('#number8');
+    const totalButton = container.find('#operator-equals')
+    const runningTotal = container.find('#running-total');
+
+    divideButton.simulate('click');
+    subtractButton.simulate('click');
+    button7.simulate('click');
+    button8.simulate('click');
+    totalButton.simulate('click')
+
+    expect(runningTotal.text()).toEqual('78')
+  })
+
+  it('Should be able to handle a clear operation without affecting the running total from a previous calculation', ()=>{
+    const button6 = container.find('#number6');
+    const button2 = container.find('#number2');
+    const addButton = container.find('#operator_add')
+    const runningTotal = container.find('#running-total');
+    const clear = container.find('#clear')
+    const totalButton = container.find('#operator-equals')
+
+    button6.simulate('click');
+    addButton.simulate('click');
+    button2.simulate('click');
+    addButton.simulate('click');
+    button2.simulate('click');
+    clear.simulate('click')
+
+    totalButton.simulate('click')
+
+    expect(runningTotal.text()).toEqual('8')
+  })
+
 })
 
