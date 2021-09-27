@@ -85,20 +85,20 @@ describe('Calculator', () => {
   })
   
   it ('Should be able to chain multiple operations together', ()=> {
-    const divideButton = container.find('#operator-divide')
+    const button9 = container.find('#number9');
     const subtractButton = container.find('#operator-subtract')
-    const button7 = container.find('#number7');
+    const addButton = container.find('#operator_add')
     const button8 = container.find('#number8');
     const totalButton = container.find('#operator-equals')
     const runningTotal = container.find('#running-total');
 
-    divideButton.simulate('click');
+    
+    button9.simulate('click');    
     subtractButton.simulate('click');
-    button7.simulate('click');
+    addButton.simulate('click');
     button8.simulate('click');
     totalButton.simulate('click')
-
-    expect(runningTotal.text()).toEqual('78')
+    expect(runningTotal.text()).toEqual('8')
   })
 
   it('Should be able to handle a clear operation without affecting the running total from a previous calculation', ()=>{
