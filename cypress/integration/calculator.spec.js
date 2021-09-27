@@ -61,5 +61,4 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', 'Error')
   })
 
-
 })
